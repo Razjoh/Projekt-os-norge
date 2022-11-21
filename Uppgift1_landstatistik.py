@@ -7,10 +7,12 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import html, dcc
 from dash.dependencies import Output, Input
+from layout import Layout
 
 df = pd.read_csv("Data/athlete_events.csv")
 
 df["Name"] = df["Name"].apply(lambda x: hl.sha256(x.encode()).hexdigest())
+
 df_norway = df[df["NOC"] == "NOR"]
 
 df_norway_sorted = (
@@ -45,32 +47,10 @@ df_norway_sorted = (
 #     .sort_values("Medals_count", ascending=False)
 # )
 
-adj_dict = {"Unadjusted": "Norway", "Adjusted": "Norway sorted"}
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
 
-app.layout = html.Main(
-    [
-        html.H1("Norway Olympics stats"),
-        html.P("Pick a graph"),
-        dcc.Dropdown(
-            id="graph-picker",
-            options=[
-                {"label": option, "value": option}
-                for option in ("Games", "Event", "Sport")
-            ],
-            value="Games",
-        ),
-        dcc.RadioItems(
-            id="adjusted",
-            options=[
-                {"label": option, "value": name} for option, name in adj_dict.items()
-            ],
-            value="Norway",
-        ),
-        dcc.Graph(id="norway-graph"),
-    ]
-)
+app.layout = Layout().layout()
 
 
 @app.callback(
@@ -93,7 +73,7 @@ def update_graph(graph, sort):
     )
     results = results[results["Medals_count"] != 0]
 
-    return px.bar(results.head(10), x=graph, y="Medals_count")
+    return px.bar(results.head(10), x=graph, y="Medals_count", template="plotly_dark")
 
 
 if __name__ == "__main__":
