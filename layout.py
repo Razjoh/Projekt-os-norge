@@ -20,7 +20,7 @@ class Layout:
                             id="graph-picker",
                             options=[
                                 {"label": option, "value": option}
-                                for option in ("Games", "Event", "Sport")
+                                for option in ("Games", "Event", "Sport", "Name")
                                 ],
                             value="Games",
                             )),
@@ -32,16 +32,12 @@ class Layout:
                                 for option, name in self._adj_dict.items()
                                 ],
                             value="Norway",
-                            inline=True
+                            inline=False
                             )),
 
                         ]),
                     
-                    
-                    
-                    
-                   
-                    
                     dcc.Graph(id="norway-graph"),
+                    dbc.Card(dbc.Button("Show labels", n_clicks=0, id="labels", color="Dark"))
                 ]
         )

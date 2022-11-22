@@ -57,8 +57,9 @@ app.layout = Layout().layout()
     Output("norway-graph", "figure"),
     Input("graph-picker", "value"),
     Input("adjusted", "value"),
+    Input("labels", "n_clicks")
 )
-def update_graph(graph, sort):
+def update_graph(graph, sort, n_clicks):
 
     if sort == "Norway":
         df = df_norway
@@ -73,7 +74,11 @@ def update_graph(graph, sort):
     )
     results = results[results["Medals_count"] != 0]
 
-    return px.bar(results.head(10), x=graph, y="Medals_count", template="plotly_dark")
+    fig = px.bar(results.head(10), x=graph, y="Medals_count", template="plotly_dark")
+
+    fig.update_xaxes(showticklabels=(n_clicks%2==0))
+
+    return fig
 
 
 if __name__ == "__main__":
