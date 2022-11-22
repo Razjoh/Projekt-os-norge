@@ -77,17 +77,25 @@ def update_slider(sport):
     Output("sports-graph", "figure"),
     Input("sports-picker", "value"),
     Input("game-slider", "value"),
+    Input("sport-tabs", "value")
 )
-def update_graph_sports(sport, games):
+def update_graph_sports(sport, games, tabs):
 
     if sport == "Sailing":
-        specific_game = df_sailing_sorted[df_sailing_sorted["Games"] == games_sailing[games]]
-        medal = specific_game.groupby("NOC")["Medal"].count().reset_index(name="Amount").sort_values("Amount",ascending=False)
-        fig = px.pie(medal, names="NOC", values="Amount", title=f"Medals per country {games_sailing[games]} olympics", template="plotly_dark")
+        if tabs == "tab-1":
+            specific_game = df_sailing_sorted[df_sailing_sorted["Games"] == games_sailing[games]]
+            medal = specific_game.groupby("NOC")["Medal"].count().reset_index(name="Amount").sort_values("Amount",ascending=False)
+            fig = px.pie(medal, names="NOC", values="Amount", title=f"Medals per country {games_sailing[games]} olympics", template="plotly_dark")
+        elif tabs == "tab-2":
+            fig = px.pie(df_sailing[df_sailing["Games"] == games_sailing[games]], names="Sex", title=f"Gender distribution sailing {games_sailing[games]} olympics", template="plotly_dark")
+
     elif sport == "Skiing":
-        specific_game = df_skiing_sorted[df_skiing_sorted["Games"] == games_skiing[games]]
-        medal = specific_game.groupby("NOC")["Medal"].count().reset_index(name="Amount").sort_values("Amount",ascending=False)
-        fig = px.pie(medal, names="NOC", values="Amount", title=f"Medals per country {games_skiing[games]} olympics", template="plotly_dark")
+        if tabs == "tab-1":
+            specific_game = df_skiing_sorted[df_skiing_sorted["Games"] == games_skiing[games]]
+            medal = specific_game.groupby("NOC")["Medal"].count().reset_index(name="Amount").sort_values("Amount",ascending=False)
+            fig = px.pie(medal, names="NOC", values="Amount", title=f"Medals per country {games_skiing[games]} olympics", template="plotly_dark")
+        elif tabs == "tab-2":
+            fig = px.pie(df_skiing[df_skiing["Games"] == games_skiing[games]], names="Sex", title=f"Gender distribution cross country skiing {games_skiing[games]} olympics", template="plotly_dark")
 
     return fig
 
