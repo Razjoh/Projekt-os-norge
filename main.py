@@ -29,6 +29,8 @@ games_skiing = df_skiing_sorted["Games"].unique().tolist()
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
 
+server = app.server
+
 app.layout = Layout().layout()
 
 
