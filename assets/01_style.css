@@ -31,3 +31,59 @@
     border-color: var(--primary); 
     box-shadow: none;
 }
+
+
+#sports-picker .Select-control {
+    background-color: #222 !important;
+}
+
+#sports-picker .Select.is-focused > .Select-control {
+    background-color: #222;
+}
+
+#sports-picker .Select-value-label {
+    color: white;
+}
+
+#sports-picker .Select--single > .Select-control .Select-value, .Select-placeholder {
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+#sports-picker .VirtualizedSelectOption {
+    background-color: #222;
+    color: white;
+ }
+
+ #sports-picker .VirtualizedSelectFocusedOption {
+    background-color: #222;
+    opacity: .7;
+}
+
+#sports-picker .Select.is-focused:not(.is-open) > .Select-control {
+    background-color: #222;
+    border-color: var(--primary); 
+    box-shadow: none;
+}
+
+#game-slider .rc-slider-track {
+    background-color: grey;
+}
+  
+#game-slider .rc-slider-dot-active {  
+    border-color: #222;
+    border: solid 2px #222;
+}
+  
+#game-slider .rc-slider-handle {
+    background-color: white;
+    border-color: #222;
+}
+  
+#game-slider .rc-slider-handle:hover {
+    border-color: white;
+}
+  
+#game-slider .rc-slider-handle-active:active {
+    border-color: white;
+}
