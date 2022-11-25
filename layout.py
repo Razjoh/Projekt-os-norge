@@ -3,6 +3,8 @@ import dash_bootstrap_components as dbc
 
 
 class Layout:
+    """"class to generate layout for dash page """
+    
     def __init__(self) -> None:
 
         self._adj_dict = {"Unadjusted": "Norway", "Adjusted": "Norway sorted"}
@@ -57,7 +59,7 @@ class Layout:
                         id="sports-picker",
                         options=[
                             {"label": option, "value": option}
-                            for option in ("Sailing", "Skiing")
+                            for option in ("Sailing", "Cross Country Skiing")
                         ],
                         value="Sailing",
                     ),
