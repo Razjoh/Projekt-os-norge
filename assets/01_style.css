@@ -1,4 +1,4 @@
-/*found on https://stackoverflow.com/questions/56402207/style-dash-components-with-dark-theme-bootstrap-css*/
+/*dropdown styling found here https://stackoverflow.com/questions/56402207/style-dash-components-with-dark-theme-bootstrap-css*/
 #graph-picker .Select-control {
     background-color: #222 !important;
 }
@@ -32,7 +32,7 @@
     box-shadow: none;
 }
 
-
+/*dropdown styling found here https://stackoverflow.com/questions/56402207/style-dash-components-with-dark-theme-bootstrap-css*/
 #sports-picker .Select-control {
     background-color: #222 !important;
 }
@@ -66,6 +66,7 @@
     box-shadow: none;
 }
 
+/*Slider styling found here https://stackoverflow.com/questions/44943464/plot-lydash-core-components-slider-color-change*/
 #game-slider .rc-slider-track {
     background-color: grey;
 }
@@ -87,7 +88,7 @@
 #game-slider .rc-slider-handle-active:active {
     border-color: white;
 }
-
+/*tabs styling found here https://dash.plotly.com/dash-core-components/tabs*/
 .custom-tab {
     color:white !important; 
     background-color: #222 !important;
